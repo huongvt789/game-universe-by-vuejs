@@ -1,2 +1,2 @@
 # game-universe-by-vuejs
-practive about vuejs...
+>Tutoral install and deployment app number one
