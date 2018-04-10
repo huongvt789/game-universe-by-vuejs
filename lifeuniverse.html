@@ -5,15 +5,26 @@
 	 <meta name="viewport" content="width=device-width, initial-scale=1">
     <link rel="stylesheet" href="http://maxcdn.bootstrapcdn.com/bootstrap/3.3.1/css/bootstrap.min.css">
     <link rel="stylesheet" href="colorlife.css">
-    <script type="text/javascript" src="vue.js"></script>
+    <script src="https://cdn.jsdelivr.net/npm/vue/dist/vue.js"></script>
     <script type="text/javascript" src="life.js"></script>
+    <script src="https://ajax.googleapis.com/ajax/libs/jquery/1.12.4/jquery.min.js"></script>
+
 </head>
-<body>
-	<div id="map">
-		<button v-if = "isCreateMap" @click = "isShowMap = true">Create Map</button>
-		<div v-if = "isShowMap" v-for = "(item, index" in creatNewMap>
-			<div v-for = "i in 100" v-bind:class = "'size' + item[i-1]"></div>
-		</div>
-	</div>
+<body style="padding: 10px 10px;">
+    <div id ="map" >
+    	<h3>Enter value number to play game</h3>
+    	<table>
+    		<tr>
+    			<th><input type="text" name="" placeholder="Enter height..."></th>
+    			<th><input type="text" name="" placeholder="Enter width..."></th>
+    		</tr>
+    	</table>
+        <button v-if="isCreate" @click="isShowingMap= true">Create map</button><br>
+        <br>
+        
+        <div class = "map-cell"v-if="isShowingMap" v-for="(item, index) in newMapUniverse">
+            <div v-for="i in 70" v-bind:class="'show-' + item[i-1]"></div>
+        </div>
+    </div>                                                                                                
 </body>
 </html>

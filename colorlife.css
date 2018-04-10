@@ -1,0 +1,45 @@
+#map {
+  float: left;
+}
+
+button {
+    text-align:  center;
+    margin-left:  153px;
+    margin-top: 20px;
+}
+
+body {
+    background-color: #f9edf5;
+}
+
+p {margin-left: 104px;}
+
+
+.showMap {
+  margin-bottom: 10px;
+}
+
+button{
+  margin-bottom: 5px;
+}
+
+.show-0 {
+  background-color: white;  /*#231475*/
+  width: 6px;
+  height: 6px;
+  border: solid 1px #614b45;
+  float: left;
+}
+
+.show-1 {
+  background-color: blue;
+  width: 6px;
+  height: 6px;
+  float: left;
+}
+
+.map-cell {
+  margin-left: 30px;
+}
+
+
