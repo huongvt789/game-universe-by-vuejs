@@ -10,7 +10,10 @@
 </head>
 <body>
 	<div id="map">
-		<button v-on:click= "isCreate">Create map</button>
+		<button v-if = "isCreateMap" @click = "isShowMap = true">Create Map</button>
+		<div v-if = "isShowMap" v-for = "(item, index" in creatNewMap>
+			<div v-for = "i in 100" v-bind:class = "'size' + item[i-1]"></div>
+		</div>
 	</div>
 </body>
 </html>
