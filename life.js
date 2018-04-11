@@ -12,9 +12,6 @@
 //=>Xu ly dong thay doi kich thuoc ten template .html 
 //(cho phep nhap kich thuoc vao ma tran thay doit theo)
 
-// End component
-// Start new Vue: Khai bao cac method: thuc hien cong viec gi (thogn)
-
 Vue.component ('create-map', {
     props: ['prop'],
     template: `
@@ -24,6 +21,22 @@ Vue.component ('create-map', {
                     </div>
                 </div>
             </div>`,
+});
+
+Vue.component('nextchange1-map', {
+    props: ['propnext1'],
+    template:`
+                <div>
+                    <div v-for="(item, index) in propnext1">
+                        <div v-for="i in 50" v-bind:class="'show-' + item[i-1]"></div>
+                    </div>
+                </div>
+            `,
+    methods: {
+        nextmap1: function () {
+            this.$emit('change1');
+        }
+    }
 });
 
 var createMap = [];
@@ -36,7 +49,7 @@ new Vue ({
         //next.
         isCreateNextMap: true,
         isShowNextMap1: false,
-        isShowNextMap2: false
+        sumCell: ""
     },
     methods: {
         addNewMap: function() {
@@ -59,11 +72,11 @@ new Vue ({
         },
 
         countNeighborPlanet: function (i, j) {
-            return parseInt(this.getValueOfCell((i - 1), (j - 1))) + parseInt(this.getValueOfCell((i - 1), j)) + parseInt(this.getValueOfCell((i - 1), (j + 1))) + parseInt(this.getValueOfCell(i, (j - 1))) + parseInt(this.getValueOfCell(i, (j + 1))) + parseInt(this.getValueOfCell((i + 1), (j - 1))) + parseInt(this.getValueOfCell((i + 1), j)) + parseInt(this.getValueOfCell((i + 1), (j + 1))) ;
+            return parseInt(this.getValueOfCell ((i - 1), (j - 1))) + parseInt(this.getValueOfCell((i - 1), j)) + parseInt(this.getValueOfCell((i - 1), (j + 1))) + parseInt(this.getValueOfCell(i, (j - 1))) + parseInt(this.getValueOfCell(i, (j + 1))) + parseInt(this.getValueOfCell((i + 1), (j - 1))) + parseInt(this.getValueOfCell((i + 1), j)) + parseInt(this.getValueOfCell((i + 1), (j + 1))) ;
         },
 
         calculateCellState: function (i, j) {
-            if (this.countNeighborPlanet(i, j) < 2 || this.countNeighborPlanet(i, j) > 3) {
+            if (this.countNeighborPlanet(i, j) < 2 || this.countNeighborPlanet (i, j) > 3) {
                 this.newUniverse[i][j] = 0;
             } else if (this.countNeighborPlanet(i, j) == 3) {
                 this.newUniverse[i][j] = 1;
@@ -72,44 +85,34 @@ new Vue ({
 
         changeUniverseMapNumber1: function () {
             this.isShowNextMap1 = true;
-            this.isShowNextMap2 = true;
-            for (var i = 0; i < 50; i++ ){
+            for (var i = 0; i < 50; i++)  {
                 for (var j = 0; j < 50; j++){
                     this.calculateCellState (i, j);
                 }
             }
             return this.newUniverse;
         },
-
-        changeUniverseMapNumber2: function () {
-            this.isShowNextMap1 = false;
-            this.isShowNextMap2 = true;
-            for (var i = 0; i < 50; i++){
-                for (var j = 0; j < 50; j++){
+        changeUniverseSize: function () {
+            for (var i = 0; i < sumCell; i++) {
+                for (var j = 0; j < sumCell; i++) {
                     this.calculateCellState (i, j);
                 }
             }
             return this.newUniverse;
         }
-
     },
 
     computed: {
         newMapUniverse: function () {
-            return this.addNewMap();
-        },
-
-        universeMapNumber: function () {
-            for (var i = 0 ; i < 50; i++) {
-                for (var j = 0; j < 50; j++) {
-                    this.calculateCellState(i, j);
-                }
-            }
-            return this.newUniverse;
+            return this.addNewMap ();
         },
 
         changeNewMapNumber: function () {
             return this.changeUniverseMapNumber1 ();
+        },
+
+        changeSumCellMapNumber: function () {
+            return this.changeUniverseSize();
         }
     } 
 });

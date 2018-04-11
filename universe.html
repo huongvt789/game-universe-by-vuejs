@@ -8,11 +8,25 @@
 	<div id="map-universe">
 		<h1>Welocome to game of life witt VueJS</h1>
 		<!-- click -->
-		<button v-if="isCreate" v-on:click="[isShowMap= true, isShowNextMap1= false, isCreateNextMap= true, isCreate= true]">Create Map</button>
-
-		<br>
+		<table>
+			<tr>
+				<th><button v-if  = "isCreate" v-on:click = "[isShowMap = true, isShowNextMap1 = false, isCreateNextMap = true, isCreate = true]">Create Map</button>
+				</th>
+				<th><button v-if = "isCreateNextMap" v-on:click = "[isCreate = true, isShowMap = false, isCreateNextMap = true, isShowNextMap1 = true]">Next to change map</button>
+				</th>
+			</tr>
+		</table>
+		<table class = "next">
+			<tr>
+				<th>Enter value max cell</th>
+				<th><input type = "text" name=  ""></th>
+				<th><button class = "play">Play now</button></th>
+			</tr>
+		</table>
 		<!-- View -->
-		<create-map class = "map-cell" v-if="isShowMap" :prop="newMapUniverse"></create-map>
+		<create-map class = "map-cell" v-if="isShowMap" :prop = "newMapUniverse"></create-map>
+
+		<nextchange1-map  class = "map-cell" @change1 = "changeUniverseMapNumber1" v-if = "isShowNextMap1" :propnext1 = "changeNewMapNumber"></nextchange1-map>
 
 	</div>
 	<script type="text/javascript" src="vue.js"></script>
