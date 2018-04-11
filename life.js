@@ -23,7 +23,7 @@ Vue.component ('create-map', {
             </div>`,
 });
 
-Vue.component('nextchange1-map', {
+Vue.component ('nextchange1-map', {
     props: ['propnext1'],
     template:`
                 <div>
@@ -38,7 +38,21 @@ Vue.component('nextchange1-map', {
         }
     }
 });
-
+Vue.component ('change-sum-cell', {
+    props: ['propsum', 'sum'],
+    template: `
+            <div>
+                <div v-for="(item, index) in propsum">
+                    <div v-for="i in sum" v-bind:class="'show-' + item[i-1]"></div>
+                </div>
+            </div>
+    `,
+     methods: {
+        nextmap2: function () {
+            this.$emit('change2');
+        }
+    }
+});
 var createMap = [];
 new Vue ({
     el: '#map-universe',
@@ -49,7 +63,10 @@ new Vue ({
         //next.
         isCreateNextMap: true,
         isShowNextMap1: false,
-        sumCell: ""
+
+        issumcell : true,
+        isShowsumcell: false,
+        sumcell: ''  
     },
     methods: {
         addNewMap: function() {
@@ -93,13 +110,14 @@ new Vue ({
             return this.newUniverse;
         },
         changeUniverseSize: function () {
-            for (var i = 0; i < sumCell; i++) {
-                for (var j = 0; j < sumCell; i++) {
+            this.isShowsumcell =true;
+            for (var i = 0; i < this.sumcell; i++)  {
+                for (var j = 0; j < this.sumcell; j++){
                     this.calculateCellState (i, j);
                 }
             }
             return this.newUniverse;
-        }
+        },
     },
 
     computed: {
@@ -111,7 +129,7 @@ new Vue ({
             return this.changeUniverseMapNumber1 ();
         },
 
-        changeSumCellMapNumber: function () {
+        changesumcellMapNumber: function () {
             return this.changeUniverseSize();
         }
     } 
