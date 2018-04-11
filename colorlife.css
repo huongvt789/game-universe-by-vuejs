@@ -37,6 +37,12 @@ button{
   height: 6px;
   float: left;
 }
+.show-2 {
+  background-color: blue;
+  width: 6px;
+  height: 6px;
+  float: left;
+}
 
 .map-cell {
   margin-left: 30px;
