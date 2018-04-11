@@ -1,6 +1,3 @@
-#map {
-  float: left;
-}
 
 button {
     text-align:  center;
@@ -10,17 +7,6 @@ button {
 
 body {
     background-color: #f9edf5;
-}
-
-p {margin-left: 104px;}
-
-
-.showMap {
-  margin-bottom: 10px;
-}
-
-button{
-  margin-bottom: 5px;
 }
 
 .show-0 {
@@ -35,6 +21,7 @@ button{
   background-color: blue;
   width: 6px;
   height: 6px;
+  border: solid 1px #614b45;
   float: left;
 }
 .show-2 {
@@ -44,7 +31,12 @@ button{
   float: left;
 }
 
+.map-universe {
+  margin-left: 30px;
+}
 .map-cell {
+  width: 30%;
+  height: 20%;
   margin-left: 30px;
 }
 

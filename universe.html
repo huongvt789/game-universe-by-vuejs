@@ -1,0 +1,21 @@
+<!DOCTYPE html>
+<html>
+<head>
+	<title>Game of life universe</title>
+	<link rel="stylesheet" type="text/css" href="color.css">
+</head>
+<body>
+	<div id="map-universe">
+		<h1>Welocome to game of life witt VueJS</h1>
+		<!-- click -->
+		<button v-if="isCreate" v-on:click="[isShowMap= true, isShowNextMap1= false, isCreateNextMap= true, isCreate= true]">Create Map</button>
+
+		<br>
+		<!-- View -->
+		<create-map class = "map-cell" v-if="isShowMap" :prop="newMapUniverse"></create-map>
+
+	</div>
+	<script type="text/javascript" src="vue.js"></script>
+	<script type="text/javascript" src="life.js"></script>
+</body>
+</html>
