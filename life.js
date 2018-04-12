@@ -17,7 +17,7 @@ Vue.component ('create-map', {
     template: `
             <div>
                 <div v-for = "(item, index) in prop">
-                    <div v-for = "i in 80" v-bind:class = "'show-' + item[i-1]">
+                    <div v-for = "i in 50" v-bind:class = "'show-' + item[i-1]">
                     </div>
                 </div>
             </div>`,
@@ -28,7 +28,7 @@ Vue.component ('nextchange1-map', {
     template:`
                 <div>
                     <div v-for="(item, index) in propnext1">
-                        <div v-for="i in 80" v-bind:class="'show-' + item[i-1]"></div>
+                        <div v-for="i in 50" v-bind:class="'show-' + item[i-1]"></div>
                     </div>
                 </div>
             `,
@@ -42,8 +42,8 @@ Vue.component ('change-sum-cell', {
     props: ['propsum', 'sum'],
     template: `
             <div>
-                <div v-for="(item, index) in propsum">
-                    <div v-for="i in sum" v-bind:class="'show-' + item[i-1]"></div>
+                <div v-for = "(item, index) in propsum">
+                    <div v-for = "i in sum" v-bind:class = "'show-' + item[i-1]"></div>
                 </div>
             </div>
     `,
@@ -53,34 +53,74 @@ Vue.component ('change-sum-cell', {
         }
     }
 });
-Vue.component ('playauto', {
-    props: ['propauto'],
+
+//component in component.
+
+Vue.component ('row-map', {
+    props: ['proprow', 'positionrow'],
+    methods:{
+        showRowMap: function () {
+        var newMapUniverse = [];
+            for (var j = 0; j < 50; j++) {
+                newMapUniverse[j] = this.proprow[this.positionrow][j];
+            }
+        return this.newMapUniverse;
+        }
+    },
+    computed: {
+        rowMapUniverse: function () {
+            return this.showRowMap ();
+        }
+    },
     template: `
-            <div>
-                <div v-for="(item, index) in propauto">
-                    <div v-for="i in sum" v-bind:class="'show-' + item[i-1]"></div>
+        <div>
+            <div v-for = "(item, index) in proprow"
+                <div v-for = "i in 50" v-bind:class = "'show-' +rowMapUniverse[i-1]">
                 </div>
             </div>
-    `
+        </div>
+    `,
 });
 
+Vue.component ('cell-map', {
+    props: ['propcell', 'positioncell'],
+    methods: {
+        showCellMap: function () {
+        var newMapUniverse = [];
+            for (var j = 0; j < 50; j++) {
+                newMapUniverse[j] = propcell[this.positioncell][j];
+            }
+        return this.newMapUniverse;
+        }
+    }, 
+    computed: {
+        cellMapUniverse: function () {
+            return this.showCellMap ();
+        }
+    },
+    template: `
+        <div>
+            <div v-for = "(item, index) in propcell"
+                <div v-for = "i in 50" v-bind:class = "'show-' +item[i-1]">
+                </div>
+            </div>
+        </div>
+    `
+}); 
 var createMap = [];
 new Vue ({
     el: '#map-universe',
     data: {
         newUniverse: createMap,
         isCreate: true,
-        isShowMap: false,
-        //next.
+        isShowMap: true,
+        //next
         isCreateNextMap: true,
         isShowNextMap1: false,
 
         issumcell : true,
         isShowsumcell: false,
         sumcell: '' ,
-
-        isAutoNext: true,
-        isShowAuto: false
     },
     methods: {
         addNewMap: function() {
@@ -94,7 +134,7 @@ new Vue ({
         },
 
         getValueOfCell: function (x, y) {
-            if (x < 0 || x >= 80 || y < 0 || y >= 80) {
+            if (x < 0 || x >= 50 || y < 0 || y >= 50) {
                 return 0;
             }
             else {
@@ -157,8 +197,5 @@ new Vue ({
         changesumcellMapNumber: function () {
             return this.changeUniverseSize ();
         },
-        autoChange: function () {
-            return this.autoChangeMap ();
-        }
     } 
 });
