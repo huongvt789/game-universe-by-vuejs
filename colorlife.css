@@ -14,11 +14,6 @@ body {
 
 p {margin-left: 104px;}
 
-
-.showMap {
-  margin-bottom: 10px;
-}
-
 button{
   margin-bottom: 5px;
 }
@@ -35,17 +30,16 @@ button{
   background-color: blue;
   width: 6px;
   height: 6px;
-  float: left;
-}
-.show-2 {
-  background-color: blue;
-  width: 6px;
-  height: 6px;
+  border: solid 1px #614b45;
   float: left;
 }
 
 .map-cell {
   margin-left: 30px;
+  float: left;
+}
+#map-universe {
+  float: left;
 }
 
 
