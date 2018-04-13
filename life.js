@@ -113,7 +113,7 @@ new Vue({
     data: {
         newUniverse: createMap,
         isCreate: true,
-        isShowMap: true,
+        isShowMap: false,
         //next
         isCreateNextMap: true,
         isShowNextMap1: false,
@@ -175,16 +175,7 @@ new Vue({
             }
             return this.newUniverse;
         },
-        autoChangeMap: function () {
-            this.isShowAuto = setInterval(function () {
-                if (document.getElementById('play2') !== null) {
-                    document.getElementById('play2').click();
-                }
-            }, 90);
-        }
     },
-
-
     computed: {
         newMapUniverse: function () {
             return this.addNewMap();
