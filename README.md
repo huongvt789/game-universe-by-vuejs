@@ -6,7 +6,7 @@
 * Play game design by VueJs use component
 - Open play file universe.html
 >develop
-![GitHun Logo](/imgage/image2.png)
+![GitHun Logo](/image/image2.png)
 Format: ![Alt Text](url)
 
 >develop2
