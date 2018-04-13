@@ -9,16 +9,16 @@ Vue.component('create-map', {
                 <div v-for="i in 50" v-bind:class="'show-' + item[i-1]"></div>
             </div>
         </div>
-    `,
+    `
 });
 
 Vue.component('universe-life', {
     props: ['changefirst'],
     template: `
         <div>
-             <button id="next1" v-on:click="changeMap1">Nexting ...</button><br>
+             <button id="next1" v-on:click="changeMap1">Playing auto change</button><br>
              <div v-for="a in 50" style="float: left;">
-                  <row-map :x="a-1" :row="changefirst"></row-map>
+                  <row-map :positionrow="a-1" :row="changefirst">.</row-map>
              </div>
         </div>
     `,
@@ -33,9 +33,9 @@ Vue.component('universe-life2', {
     props: ['changetwo'],
     template: `
         <div>
-             <button id="next2" v-on:click="changeMap2">Nexting ...</button><br>
+             <button id="next2" v-on:click="changeMap2">Play auto change</button><br>
              <div v-for="a in 50"  style="float: left;">
-                  <row-map :x="a-1" :row="changetwo"></row-map>
+                  <row-map :positionrow="a-1" :row="changetwo"></row-map>
              </div>
         </div>
     `,
@@ -58,7 +58,7 @@ Vue.component('row-map', {
     },
 
     computed: {
-        showRowMapUniver: function () {
+        showRowMapUniverse: function () {
             return this.showRowMap();
         }
     },
@@ -66,7 +66,7 @@ Vue.component('row-map', {
     template: `
                 <div>
                     <div v-for="i in 50">
-                        <cell-map :x="i-1" :cell="showRowMapUniver"></cell-map>
+                        <cell-map :positioncell="i-1" :cell="showRowMapUniverse"></cell-map>
                     </div>
                 </div>
            `
@@ -102,7 +102,7 @@ new Vue({
     data: {
         newUniverse: createMap,
         isShowMap: true,
-        isShowChangeMap1: false,
+        isShowChangeMap1: true,
         isShowChangeMap2: false
     },
     methods: {
@@ -141,8 +141,8 @@ new Vue({
         },
 
         changeUniverseMapNumber1: function () {
-            this.isShowChangeMap2 = true;
             this.isShowMap = false;
+            this.isShowChangeMap2 = true;
             this.isShowChangeMap1 = false;
             for (var i = 0; i < 50; i++) {
                 for (var j = 0; j < 50; j++) {
@@ -152,21 +152,11 @@ new Vue({
             return this.newUniverse;
         },
         changeUniverseMapNumber2: function () {
+            this.isShowMap = false;
             this.isShowChangeMap1 = true;
             this.isShowChangeMap2 = false;
-            this.isShowMap = false;
             for (var i = 0; i < 50; i++) {
                 for (var j = 0; j < 50; j++) {
-                    this.calculateCellState(i, j);
-                }
-            }
-            return this.newUniverse;
-        },
-
-        changeUniverseSize: function () {
-            this.isShowsumcell = true;
-            for (var i = 0; i < this.sumcell; i++) {
-                for (var j = 0; j < this.sumcell; j++) {
                     this.calculateCellState(i, j);
                 }
             }
@@ -186,7 +176,6 @@ setInterval(function () {
     if (document.getElementById('next1') !== null) {
         document.getElementById('next1').click();
     }
-
 }, 100);
 setInterval(function () {
     if (document.getElementById('next2') !== null) {

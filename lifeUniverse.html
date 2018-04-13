@@ -8,11 +8,12 @@
 <body>
 <h1>Welcome to game of life</h1>
 <div id="map-universe">
-        <create-map v-if="isShowMap" :mapuniverse="newMapUniverse">Create..</create-map>
-        <universe-life @changemap1 = "changeUniverseMapNumber1" v-if="isShowChangeMap1" :changefirst="changNextMapUniverse">Create...</universe-life>
-        <universe-life2 @changemap2 = "changeUniverseMapNumber2" v-if="isShowChangeMap2" :changetwo="changNextMapUniverse">Create...</universe-life2>
+        <create-map v-if="isShowMap" :mapuniverse="newMapUniverse"></create-map>
+        <universe-life @changemap1 = "changeUniverseMapNumber1" v-if="isShowChangeMap1" :changefirst="changeNewMapUniverse"></universe-life>
+        <universe-life2 @changemap2 = "changeUniverseMapNumber2" v-if="isShowChangeMap2" :changetwo="changeNewMapUniverse"></universe-life2>
 </div>
-<script src="https://cdn.jsdelivr.net/npm/vue/dist/vue.js"></script>
+<script src="vue.js"></script>
+<script src="https://ajax.googleapis.com/ajax/libs/jquery/1.12.4/jquery.min.js"></script>
 <script src="lifeUniverse.js"></script>
 </body>
 </html>
