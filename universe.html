@@ -6,7 +6,7 @@
 </head>
 <body>
 <div id="map-universe">
-	<h1>Welcome to game of life with VueJS</h1>
+    <h1>Welcome to game of life with VueJS</h1>
     <!-- click -->
     <table>
         <tr>
@@ -41,8 +41,9 @@
 
     <nextchange1-map class="map-cell" @change1="changeUniverseMapNumber1" v-if="isShowNextMap1"
                      :propnext1="changeNewMapNumber"></nextchange1-map>
-                     
-    <change-sum-cell class = "map-cell" @change2 = "changeUniverseSize" v-if = "isShowsumcell" :propsum = "changesumcellMapNumber" :sum = "sumcell"></change-sum-cell>
+
+    <change-sum-cell class="map-cell" @change2="changeUniverseSize" v-if="isShowsumcell"
+                     :propsum="changesumcellMapNumber" :sum="sumcell"></change-sum-cell>
 </div>
 <script type="text/javascript" src="vue.js"></script>
 <script src="https://ajax.googleapis.com/ajax/libs/jquery/1.12.4/jquery.min.js"></script>
