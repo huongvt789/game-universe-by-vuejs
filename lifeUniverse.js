@@ -118,12 +118,12 @@ new Vue({
             return this.newUniverse;
         },
 
-        getValueOfCell: function (x, y) {
-            if (x < 0 || x >= 50 || y < 0 || y >= 50) {
+        getValueOfCell: function (countHeight, countWidth) {
+            if (countHeight < 0 || countHeight>= 50 || countWidth < 0 || countWidth >= 50) {
                 return 0;
             }
             else {
-                return this.newUniverse[x][y];
+                return this.newUniverse[countHeight][countWidth];
             }
         },
 
